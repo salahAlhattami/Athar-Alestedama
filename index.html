@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مؤسسة أثر الاستدامة | ATHR Sustainability</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Montserrat:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #4A8B5E;
+            --primary-blue: #2B7FB5;
+            --primary-orange: #F5A623;
+            --dark-blue: #2C3E50;
+            --light-gray: #F8F9FA;
+            --white: #FFFFFF;
+            --text-dark: #2C3E50;
+            --text-light: #6C757D;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            line-height: 1.8;
+            color: var(--text-dark);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        body.en {
+            font-family: 'Montserrat', sans-serif;
+            direction: ltr;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 80px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-green);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-green);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .lang-toggle {
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+            color: white;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(43, 127, 181, 0.3);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--text-dark);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 90px;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .slide-1 {
+            background-image: url('https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=1920&q=90');
+        }
+
+        .slide-2 {
+            background-image: url('https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?w=1920&q=90');
+        }
+
+        .slide-3 {
+            background-image: url('https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=1920&q=90');
+        }
+
+        .slide-4 {
+            background-image: url('https://images.unsplash.com/photo-1473186578172-c141e6798cf4?w=1920&q=90');
+        }
+
+        .slide-5 {
+            background-image: url('https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=1920&q=90');
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(74, 139, 94, 0.88), rgba(43, 127, 181, 0.88));
+            z-index: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(74, 139, 94, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(43, 127, 181, 0.3) 0%, transparent 50%);
+            animation: pulse 10s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            line-height: 1.3;
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+            opacity: 0.98;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+            opacity: 0.98;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary-green);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary-green);
+        }
+
+        .slider-indicators {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 3;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: white;
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        /* Statistics Section */
+        .statistics {
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+            padding: 5rem 2rem;
+            color: white;
+        }
+
+        .stats-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1.3rem;
+            font-weight: 600;
+            opacity: 0.95;
+        }
+
+        /* Sections */
+        .section {
+            padding: 6rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-green);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-green), var(--primary-blue));
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 5rem;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: var(--text-dark);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-image {
+            text-align: center;
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 450px;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(74, 139, 94, 0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Work Process Section */
+        .work-process {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .process-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .process-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-green), var(--primary-blue));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .process-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(43, 127, 181, 0.2);
+        }
+
+        .process-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .process-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+            color: white;
+            transition: all 0.4s ease;
+        }
+
+        .process-card:hover .process-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .process-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .process-description {
+            font-size: 1.05rem;
+            line-height: 1.9;
+            color: var(--text-dark);
+            text-align: center;
+        }
+
+        /* Services */
+        .services {
+            background: var(--light-gray);
+        }
+
+        .services-intro {
+            max-width: 900px;
+            margin: 0 auto 4rem;
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 2;
+            color: var(--text-dark);
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.06);
+            border-right: 5px solid var(--primary-green);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 0;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .service-card-image {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .service-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+            filter: grayscale(70%) brightness(0.6);
+        }
+
+        .service-card:hover .service-card-image img {
+            filter: grayscale(0%) brightness(1);
+            transform: scale(1.1);
+        }
+
+        .service-card-content {
+            padding: 2rem;
+            background: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-green), var(--primary-blue));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(43, 127, 181, 0.2);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary-green);
+            font-weight: 700;
+        }
+
+        .service-card p {
+            color: var(--text-dark);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: var(--light-gray);
+        }
+
+        .testimonials-slider {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .testimonial-slide {
+            display: none;
+            text-align: center;
+            padding: 3rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-slide.active {
+            display: block;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .testimonial-text {
+            font-size: 1.3rem;
+            line-height: 2;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+            font-style: italic;
+            position: relative;
+        }
+
+        .testimonial-text::before {
+            content: '"';
+            font-size: 4rem;
+            color: var(--primary-green);
+            opacity: 0.3;
+            position: absolute;
+            top: -20px;
+            right: 20px;
+        }
+
+        .testimonial-author {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .testimonial-position {
+            font-size: 1rem;
+            color: var(--text-light);
+        }
+
+        .testimonial-dots {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .testimonial-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--text-light);
+            margin: 0 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-dot.active {
+            background: var(--primary-green);
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        /* Vision */
+        .vision {
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-green));
+            color: white;
+            text-align: center;
+        }
+
+        .vision .section-title {
+            color: white;
+        }
+
+        .vision-content {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.3rem;
+            line-height: 2;
+        }
+
+        /* Partners */
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .partner-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .partner-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .partner-card h3 {
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        /* Contact */
+        .contact {
+            background: var(--light-gray);
+        }
+
+        .contact-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+            padding: 2.5rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-intro h3 {
+            font-size: 2rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .contact-intro p {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            color: var(--text-dark);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #E0E0E0;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-green);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateX(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .contact-item-icon {
+            font-size: 2rem;
+            color: var(--primary-green);
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .contact-item-text h4 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-green);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-blue);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section {
+            text-align: right;
+        }
+
+        body.en .footer-section {
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 2.2;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--primary-orange);
+            transform: translateX(-5px);
+        }
+
+        body.en .footer-section a:hover {
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            justify-content: flex-start;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: var(--primary-green);
+            transform: translateY(-3px);
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 90px;
+                right: -100%;
+                width: 100%;
+                height: calc(100vh - 90px);
+                background: white;
+                flex-direction: column;
+                padding: 2rem;
+                transition: right 0.3s ease;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 4rem 1.5rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .services-grid,
+            .work-process {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .slider-indicators {
+                bottom: 20px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .footer-section {
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <img src="data:image/jpeg;base64,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zPkD6hOf5HuywTuJ+tsu1phWpM3uV1aha3ttwk4kh/J49uuS/Fp1SrjNipd8VKAdUB2ftIKNF6STLvM8ae1cJuRxPyGQShgFq/MXtgqCizLX8Dt1BKUkpc7BKUkj2Fe2VprVBwWXrtjVmu1YQ6v88MGViFvZxGRJQUuNuuQQ18Er822z8Qp8u0g9+1d31VsMZZFC5pcME5Bx74cSPd6gDkHpufJdIbfemStknqmvDTzAcrhkiMxgH3j7pJ8Q7Z5th5qsxtLlbqPNOFHrb68RuvH8xzTavKfOcS0Ph8XKVZLfsvjXjD9fW+yRMfiJLi1x3pipSGkRk/DC/jHry8zUq2lIT9u9WPkBAlI+HKg+nhp6HKQCVALayvYiFDvv7KCx9Pv9a77wa4Xq01giZW/NfahyDdDeQN3o5nYscts5iO8mHFQ47aR+UbXb2fzDchxqM2T8L4nsvs1IY1j9iYvkzJ2LNa2cjuNtYs0+/NwWkXibEiuPuxorskJ+ItppcmQtDaiUpU+sgAqNTNwuFKA+kpG5buOYkHORENiANvxf2nt3kbZaK95hrq5wa8ODuUNcMAGY4OXHfMvyw3vnbl6UpVvK70pSlESlKURKUpREpSlESlKURKUpREpSlESlKURKUpREpSlESlKURKUpREpSlESlKURKUpREpSlESlKURKUpREpSlESlKURKUpREpSlESlKURKUpREpSlESlKURKUpREpSlESlKURKUpREpSlESlKURKUpREpSlESlKURKUpREpSlESlKURKUpREpSlESlKURKUpREpSlESlKURKUpREpSlESlKURKUpREpSlESlKURKUpREpSlESlKURKUpREpSlESlKURKUpREpSlESlKURKUpREpSlESlKURKUpREpSlEX//Z" alt="ATHR Logo" class="logo">
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" data-ar="الرئيسية" data-en="Home">الرئيسية</a></li>
+                <li><a href="#about" data-ar="من نحن" data-en="About">من نحن</a></li>
+                <li><a href="#services" data-ar="خدماتنا" data-en="Services">خدماتنا</a></li>
+                <li><a href="#partners" data-ar="شركاؤنا" data-en="Partners">شركاؤنا</a></li>
+                <li><a href="#contact" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a></li>
+            </ul>
+            <button class="lang-toggle" onclick="toggleLanguage()" id="langBtn">English</button>
+            <div class="mobile-menu" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-slider">
+            <div class="hero-slide slide-1 active"></div>
+            <div class="hero-slide slide-2"></div>
+            <div class="hero-slide slide-3"></div>
+            <div class="hero-slide slide-4"></div>
+            <div class="hero-slide slide-5"></div>
+        </div>
+
+        <div class="hero-content">
+            <h1 data-ar="مؤسسة أثر الاستدامة" data-en="ATHR Sustainability">مؤسسة أثر الاستدامة</h1>
+            <p class="tagline" data-ar="نحترف التفكير ونجيد التخطيط ونتميز في التطبيق ونحقق الآمال فيستديم الأثر" 
+               data-en="We Master Thinking, Excel in Planning, Distinguish in Implementation, and Achieve Aspirations for Lasting Impact">
+                نحترف التفكير ونجيد التخطيط ونتميز في التطبيق ونحقق الآمال فيستديم الأثر
+            </p>
+            <p class="subtitle" data-ar="أول شركة سعودية تُمكن وتدعم مشاريع الاقتصاد الاجتماعي نحو ريادة أعمال مستدامة" 
+               data-en="The First Saudi Company Empowering Social Economy Projects Towards Sustainable Entrepreneurship">
+                أول شركة سعودية تُمكن وتدعم مشاريع الاقتصاد الاجتماعي نحو ريادة أعمال مستدامة
+            </p>
+            <div class="cta-buttons">
+                <a href="#services" class="btn btn-primary" data-ar="استكشف خدماتنا" data-en="Explore Our Services">استكشف خدماتنا</a>
+                <a href="#contact" class="btn btn-secondary" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</a>
+            </div>
+        </div>
+
+        <div class="slider-indicators">
+            <span class="indicator active" onclick="goToSlide(0)"></span>
+            <span class="indicator" onclick="goToSlide(1)"></span>
+            <span class="indicator" onclick="goToSlide(2)"></span>
+            <span class="indicator" onclick="goToSlide(3)"></span>
+            <span class="indicator" onclick="goToSlide(4)"></span>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="statistics">
+        <div class="stats-container">
+            <div class="stat-box">
+                <span class="stat-number" data-target="150">0</span>
+                <span class="stat-label" data-ar="مشروع بيئي" data-en="Environmental Project">مشروع بيئي</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number" data-target="200">0</span>
+                <span class="stat-label" data-ar="استشارة متخصصة" data-en="Specialized Consultation">استشارة متخصصة</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number" data-target="98">0</span>
+                <span class="stat-label" data-ar="نسبة رضا العملاء %" data-en="Client Satisfaction %">نسبة رضا العملاء %</span>
+            </div>
+            <div class="stat-box">
+                <span class="stat-number" data-target="50">0</span>
+                <span class="stat-label" data-ar="شريك استراتيجي" data-en="Strategic Partner">شريك استراتيجي</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <h2 class="section-title" data-ar="من نحن" data-en="About Us">من نحن</h2>
+        <p class="section-subtitle" data-ar="رؤية مستدامة لمستقبل أفضل" data-en="A Sustainable Vision for a Better Future">رؤية مستدامة لمستقبل أفضل</p>
+        <div class="about-content">
+            <div class="about-text">
+                <p data-ar="أثر الاستدامة هي أول شركة سعودية تُمكن وتدعم مشاريع الاقتصاد الاجتماعي نحو ريادة أعمال مستدامة. عملت منذ تأسيسها على إحداث نقلة نوعية في تقديم الحلول المستدامة بهدف تعزيز الاستدامة البيئية والاجتماعية."
+                   data-en="ATHR Sustainability is the first Saudi company that enables and supports social economy projects towards sustainable entrepreneurship. Since its establishment, it has worked to create a paradigm shift in providing sustainable solutions to enhance environmental and social sustainability.">
+                    أثر الاستدامة هي أول شركة سعودية تُمكن وتدعم مشاريع الاقتصاد الاجتماعي نحو ريادة أعمال مستدامة. عملت منذ تأسيسها على إحداث نقلة نوعية في تقديم الحلول المستدامة بهدف تعزيز الاستدامة البيئية والاجتماعية.
+                </p>
+                <p data-ar="نعمل بواسطة فريق من الخبراء والمتخصصين والمهتمين بالبيئة على نشر الوعي وتقديم أفضل الحلول المستدامة للوصول إلى عالم يعيش فيه الجميع بتناغم مع الطبيعة ويحقق فيه الأفراد والمجتمعات نموا مستداما."
+                   data-en="We work through a team of experts, specialists, and environmental enthusiasts to spread awareness and provide the best sustainable solutions to reach a world where everyone lives in harmony with nature and where individuals and communities achieve sustainable growth.">
+                    نعمل بواسطة فريق من الخبراء والمتخصصين والمهتمين بالبيئة على نشر الوعي وتقديم أفضل الحلول المستدامة للوصول إلى عالم يعيش فيه الجميع بتناغم مع الطبيعة ويحقق فيه الأفراد والمجتمعات نموا مستداما.
+                </p>
+                <p data-ar="تتماشى برامجنا مع مستهدفات رؤية 2030 وتساهم في رفع جودة الحياة والتكامل مع النظام البيئي والاجتماعي والاقتصادي لتحقيق النمو المجتمعي المستدام العالمي."
+                   data-en="Our programs align with Vision 2030 targets and contribute to raising quality of life and integrating with the environmental, social, and economic system to achieve global sustainable community growth.">
+                    تتماشى برامجنا مع مستهدفات رؤية 2030 وتساهم في رفع جودة الحياة والتكامل مع النظام البيئي والاجتماعي والاقتصادي لتحقيق النمو المجتمعي المستدام العالمي.
+                </p>
+            </div>
+            <div class="about-image">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MDAgNTAwIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZWFydGhHcmFkIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3R5bGU9InN0b3AtY29sb3I6IzRBOEI1RTtzdG9wLW9wYWNpdHk6MSIgLz4KICAgICAgPHN0b3Agb2Zmc2V0PSI1MCUiIHN0eWxlPSJzdG9wLWNvbG9yOiMyQjdGQjU7c3RvcC1vcGFjaXR5OjEiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6IzRBOEI1RTtzdG9wLW9wYWNpdHk6MSIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImhpZ2hsaWdodCIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMCUiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdHlsZT0ic3RvcC1jb2xvcjojZmZmZmZmO3N0b3Atb3BhY2l0eTowLjMiIC8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3R5bGU9InN0b3AtY29sb3I6I2ZmZmZmZjtzdG9wLW9wYWNpdHk6MCIgLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgoKICA8IS0tIEdsb2JlIGJhY2tncm91bmQgLS0+CiAgPGNpcmNsZSBjeD0iMjUwIiBjeT0iMjUwIiByPSIyMDAiIGZpbGw9InVybCgjZWFydGhHcmFkKSIgb3BhY2l0eT0iMC45Ii8+CgogIDwhLS0gQ29udGluZW50cyBzaW1wbGlmaWVkIC0tPgogIDxwYXRoIGQ9Ik0gMjUwIDgwIFEgMjgwIDEwMCAyOTAgMTMwIFQgMzEwIDE4MCBRIDMyMCAyMDAgMzAwIDIyMCBUIDI2MCAyNTAgUSAyNDAgMjYwIDIyMCAyNTAgVCAxODAgMjIwIFEgMTYwIDIwMCAxNzAgMTgwIFQgMjEwIDEzMCBRIDIzMCAxMDAgMjUwIDgwIiBmaWxsPSIjMkM1RjJEIiBvcGFjaXR5PSIwLjciLz4KICA8cGF0aCBkPSJNIDE1MCAyMDAgUSAxNjAgMjIwIDE1MCAyNDAgVCAxMjAgMjgwIFEgMTAwIDMwMCAxMTAgMzIwIFQgMTQwIDM1MCBRIDE2MCAzNjAgMTgwIDM1MCIgZmlsbD0iIzJDNUYyRCIgb3BhY2l0eT0iMC43Ii8+CiAgPHBhdGggZD0iTSAzMjAgMjgwIFEgMzQwIDMwMCAzNTAgMzIwIFQgMzYwIDM2MCBRIDM2NSAzODAgMzUwIDM5MCBUIDMyMCA0MDAgUSAzMDAgMzk1IDI5MCAzODAiIGZpbGw9IiMyQzVGMkQiIG9wYWNpdHk9IjAuNyIvPgogIDxwYXRoIGQ9Ik0gMjAwIDMyMCBRIDIyMCAzNDAgMjQwIDM1MCBUIDI4MCAzNzAgUSAzMDAgMzgwIDMxMCAzOTAiIGZpbGw9IiMyQzVGMkQiIG9wYWNpdHk9IjAuNiIvPgoKICA8IS0tIExlYWYgc3ltYm9scyBmb3Igc3VzdGFpbmFiaWxpdHkgLS0+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzUwLCAxNTApIj4KICAgIDxwYXRoIGQ9Ik0gMCAwIFEgMTAgLTIwIDIwIC0xNSBRIDE1IC01IDIwIDAgUSAxMCA1IDAgMCIgZmlsbD0iIzkwRUU5MCIgb3BhY2l0eT0iMC44Ii8+CiAgPC9nPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEyMCwgMzUwKSI+CiAgICA8cGF0aCBkPSJNIDAgMCBRIDEwIC0yMCAyMCAtMTUgUSAxNSAtNSAyMCAwIFEgMTAgNSAwIDAiIGZpbGw9IiM5MEVFOTAiIG9wYWNpdHk9IjAuOCIvPgogIDwvZz4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzODAsIDMyMCkiPgogICAgPHBhdGggZD0iTSAwIDAgUSAxMCAtMjAgMjAgLTE1IFEgMTUgLTUgMjAgMCBRIDEwIDUgMCAwIiBmaWxsPSIjOTBFRTkwIiBvcGFjaXR5PSIwLjgiLz4KICA8L2c+CgogIDwhLS0gR2xvYmUgaGlnaGxpZ2h0IC0tPgogIDxlbGxpcHNlIGN4PSIyNTAiIGN5PSIyNTAiIHJ4PSIyMDAiIHJ5PSIyMDAiIGZpbGw9InVybCgjaGlnaGxpZ2h0KSIvPgoKICA8IS0tIE9yYml0YWwgcmluZ3MgLS0+CiAgPGVsbGlwc2UgY3g9IjI1MCIgY3k9IjI1MCIgcng9IjIyMCIgcnk9IjIyMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNEE4QjVFIiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9IjAuMyIgc3Ryb2tlLWRhc2hhcnJheT0iNSw1Ii8+CiAgPGVsbGlwc2UgY3g9IjI1MCIgY3k9IjI1MCIgcng9IjI0MCIgcnk9IjI0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMkI3RkI1IiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuMiIgc3Ryb2tlLWRhc2hhcnJheT0iMywzIi8+Cjwvc3ZnPg==" alt="الاستدامة البيئية">
+            </div>
+        </div>
+
+        <!-- Work Process -->
+        <h3 class="section-title" style="margin-top: 3rem;" data-ar="آلية العمل" data-en="Work Methodology">آلية العمل</h3>
+        <div class="work-process">
+            <div class="process-card">
+                <div class="process-icon">🔍</div>
+                <h4 class="process-title" data-ar="التشخيص والتحليل" data-en="Diagnosis & Analysis">التشخيص والتحليل</h4>
+                <p class="process-description" data-ar="نبدأ بدراسة وضع العميل أو المؤسسة بدقة، من خلال تحليل الاحتياجات البيئية والاجتماعية وتقييم الوضع الحالي. هذه المرحلة تساعدنا على فهم التحديات والفرص وتحديد أفضل الحلول المستدامة."
+                   data-en="We begin by carefully studying the client or organization's situation through analyzing environmental and social needs and evaluating the current status. This phase helps us understand challenges and opportunities and identify the best sustainable solutions.">
+                    نبدأ بدراسة وضع العميل أو المؤسسة بدقة، من خلال تحليل الاحتياجات البيئية والاجتماعية وتقييم الوضع الحالي. هذه المرحلة تساعدنا على فهم التحديات والفرص وتحديد أفضل الحلول المستدامة.
+                </p>
+            </div>
+
+            <div class="process-card">
+                <div class="process-icon">📋</div>
+                <h4 class="process-title" data-ar="التخطيط ووضع الاستراتيجيات" data-en="Planning & Strategy">التخطيط ووضع الاستراتيجيات</h4>
+                <p class="process-description" data-ar="بعد التشخيص، نقوم بتصميم خطة متكاملة تتضمن استراتيجيات عملية ومنهجيات علمية متقدمة. نحرص على أن تكون الخطة متوافقة مع رؤية 2030 وأفضل الممارسات الدولية في مجال الاستدامة."
+                   data-en="After diagnosis, we design a comprehensive plan including practical strategies and advanced scientific methodologies. We ensure the plan aligns with Vision 2030 and international best practices in sustainability.">
+                    بعد التشخيص، نقوم بتصميم خطة متكاملة تتضمن استراتيجيات عملية ومنهجيات علمية متقدمة. نحرص على أن تكون الخطة متوافقة مع رؤية 2030 وأفضل الممارسات الدولية في مجال الاستدامة.
+                </p>
+            </div>
+
+            <div class="process-card">
+                <div class="process-icon">⚙️</div>
+                <h4 class="process-title" data-ar="التنفيذ والمتابعة" data-en="Implementation & Follow-up">التنفيذ والمتابعة</h4>
+                <p class="process-description" data-ar="نرافق عملاءنا في مرحلة التنفيذ خطوة بخطوة، ونوفر الإشراف والتدريب لضمان تطبيق الحلول بكفاءة. كما نتابع الأداء بشكل دوري لضمان الاستدامة المستمرة وإحداث أثر ملموس."
+                   data-en="We accompany our clients step by step during implementation, providing supervision and training to ensure efficient solution application. We also monitor performance regularly to ensure continuous sustainability and tangible impact.">
+                    نرافق عملاءنا في مرحلة التنفيذ خطوة بخطوة، ونوفر الإشراف والتدريب لضمان تطبيق الحلول بكفاءة. كما نتابع الأداء بشكل دوري لضمان الاستدامة المستمرة وإحداث أثر ملموس.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="services">
+        <h2 class="section-title" data-ar="خدماتنا" data-en="Our Services">خدماتنا</h2>
+        <p class="section-subtitle" data-ar="حلول مستدامة شاملة لمستقبل أفضل" data-en="Comprehensive Sustainable Solutions for a Better Future">حلول مستدامة شاملة لمستقبل أفضل</p>
+
+        <div class="services-intro">
+            <p data-ar="نقدّم في أثر الاستدامة حلولاً متكاملة تساعد المؤسسات والأفراد على تطبيق ممارسات بيئية واجتماعية واقتصادية مستدامة، وفق رؤية المملكة 2030."
+               data-en="At ATHR Sustainability, we provide integrated solutions that help organizations and individuals implement sustainable environmental, social, and economic practices, in accordance with the Kingdom's Vision 2030.">
+                نقدّم في أثر الاستدامة حلولاً متكاملة تساعد المؤسسات والأفراد على تطبيق ممارسات بيئية واجتماعية واقتصادية مستدامة، وفق رؤية المملكة 2030.
+            </p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-card-image">
+                    <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80" alt="Educational Programs">
+                </div>
+                <div class="service-card-content">
+                    <h3 data-ar="البرامج التعليمية والتوعوية" data-en="Educational Programs">البرامج التعليمية والتوعوية</h3>
+                    <p data-ar="تقديم ورش عمل ودورات تدريبية تهدف إلى زيادة الوعي البيئي وتعليم الممارسات المستدامة"
+                       data-en="Providing workshops and training courses aimed at increasing environmental awareness and teaching sustainable practices">
+                        تقديم ورش عمل ودورات تدريبية تهدف إلى زيادة الوعي البيئي وتعليم الممارسات المستدامة
+                    </p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-card-image">
+                    <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=600&q=80" alt="Environmental Projects">
+                </div>
+                <div class="service-card-content">
+                    <h3 data-ar="المشاريع البيئية" data-en="Environmental Projects">المشاريع البيئية</h3>
+                    <p data-ar="تنفيذ مشاريع عملية مثل إعادة التشجير وإدارة النفايات وتحسين كفاءة استخدام الموارد"
+                       data-en="Implementing practical projects such as reforestation, waste management, and improving resource efficiency">
+                        تنفيذ مشاريع عملية مثل إعادة التشجير وإدارة النفايات وتحسين كفاءة استخدام الموارد
+                    </p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-card-image">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80" alt="Environmental Consulting">
+                </div>
+                <div class="service-card-content">
+                    <h3 data-ar="الاستشارات البيئية" data-en="Environmental Consulting">الاستشارات البيئية</h3>
+                    <p data-ar="وضع استراتيجيات وتصميم أنظمة حديثة وتطبيق منهجيات علمية متقدمة لتطوير الأنشطة البيئية"
+                       data-en="Developing strategies, designing modern systems, and applying advanced scientific methodologies to develop environmental activities">
+                        وضع استراتيجيات وتصميم أنظمة حديثة وتطبيق منهجيات علمية متقدمة لتطوير الأنشطة البيئية
+                    </p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-card-image">
+                    <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=600&q=80" alt="Research & Development">
+                </div>
+                <div class="service-card-content">
+                    <h3 data-ar="البحث والتطوير" data-en="Research & Development">البحث والتطوير</h3>
+                    <p data-ar="إجراء دراسات وأبحاث لتطوير حلول مبتكرة في مجال الاستدامة البيئية والاجتماعية"
+                       data-en="Conducting studies and research to develop innovative solutions in environmental and social sustainability">
+                        إجراء دراسات وأبحاث لتطوير حلول مبتكرة في مجال الاستدامة البيئية والاجتماعية
+                    </p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-card-image">
+                    <img src="https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=600&q=80" alt="Entrepreneurship">
+                </div>
+                <div class="service-card-content">
+                    <h3 data-ar="ريادة الأعمال والابتكار" data-en="Entrepreneurship & Innovation">ريادة الأعمال والابتكار</h3>
+                    <p data-ar="تقديم خدمات ريادية مبتكرة لتطوير أصحاب الأعمال في قطاع المشروعات البيئية"
+                       data-en="Providing innovative entrepreneurial services to develop business owners in the environmental projects sector">
+                        تقديم خدمات ريادية مبتكرة لتطوير أصحاب الأعمال في قطاع المشروعات البيئية
+                    </p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-card-image">
+                    <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80" alt="Environmental Guide">
+                </div>
+                <div class="service-card-content">
+                    <h3 data-ar="الدليل البيئي" data-en="Environmental Guide">الدليل البيئي</h3>
+                    <p data-ar="إعداد وتصميم وتطوير دلائل بيئية شاملة للشركات والمؤسسات حول الممارسات المستدامة"
+                       data-en="Preparing, designing, and developing comprehensive environmental guides for companies and institutions on sustainable practices">
+                        إعداد وتصميم وتطوير دلائل بيئية شاملة للشركات والمؤسسات حول الممارسات المستدامة
+                    </p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-card-image">
+                    <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?w=600&q=80" alt="Partnerships">
+                </div>
+                <div class="service-card-content">
+                    <h3 data-ar="الشراكات الاستراتيجية" data-en="Strategic Partnerships">الشراكات الاستراتيجية</h3>
+                    <p data-ar="بناء علاقات تعاون مع الجهات الحكومية والخاصة لتعزيز الاستدامة وتحقيق تأثير أكبر"
+                       data-en="Building collaborative relationships with government and private entities to enhance sustainability and achieve greater impact">
+                        بناء علاقات تعاون مع الجهات الحكومية والخاصة لتعزيز الاستدامة وتحقيق تأثير أكبر
+                    </p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-card-image">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80" alt="Environmental Analysis">
+                </div>
+                <div class="service-card-content">
+                    <h3 data-ar="تحليل الاحتياجات البيئية" data-en="Environmental Needs Analysis">تحليل الاحتياجات البيئية</h3>
+                    <p data-ar="تقييم الجوانب البيئية وتحديد نقاط القوة والضعف وإجراء التحليل المالي البيئي"
+                       data-en="Assessing environmental aspects, identifying strengths and weaknesses, and conducting environmental financial analysis">
+                        تقييم الجوانب البيئية وتحديد نقاط القوة والضعف وإجراء التحليل المالي البيئي
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="section testimonials">
+        <h2 class="section-title" data-ar="آراء عملائنا" data-en="Client Testimonials">آراء عملائنا</h2>
+        <p class="section-subtitle" data-ar="ماذا يقول شركاؤنا عن خدماتنا" data-en="What Our Partners Say About Our Services">ماذا يقول شركاؤنا عن خدماتنا</p>
+
+        <div class="testimonials-slider">
+            <div class="testimonial-slide active">
+                <p class="testimonial-text" data-ar="خدمات استشارية متميزة وحلول مبتكرة ساهمت في تحسين أدائنا البيئي بشكل ملحوظ. فريق محترف ومتعاون."
+                   data-en="Outstanding consulting services and innovative solutions that significantly improved our environmental performance. Professional and cooperative team.">
+                    خدمات استشارية متميزة وحلول مبتكرة ساهمت في تحسين أدائنا البيئي بشكل ملحوظ. فريق محترف ومتعاون.
+                </p>
+                <div class="testimonial-author" data-ar="محمد العتيبي" data-en="Mohammed Al-Otaibi">محمد العتيبي</div>
+                <div class="testimonial-position" data-ar="مدير التطوير المؤسسي" data-en="Institutional Development Manager">مدير التطوير المؤسسي</div>
+            </div>
+
+            <div class="testimonial-slide">
+                <p class="testimonial-text" data-ar="تجربة رائعة مع فريق أثر الاستدامة. ساعدونا في تطبيق معايير الاستدامة بشكل عملي وفعال."
+                   data-en="Great experience with the ATHR Sustainability team. They helped us implement sustainability standards practically and effectively.">
+                    تجربة رائعة مع فريق أثر الاستدامة. ساعدونا في تطبيق معايير الاستدامة بشكل عملي وفعال.
+                </p>
+                <div class="testimonial-author" data-ar="نورة السالم" data-en="Noura Al-Salem">نورة السالم</div>
+                <div class="testimonial-position" data-ar="مديرة المسؤولية الاجتماعية" data-en="Social Responsibility Manager">مديرة المسؤولية الاجتماعية</div>
+            </div>
+
+            <div class="testimonial-slide">
+                <p class="testimonial-text" data-ar="شركاء موثوقون في رحلتنا نحو الاستدامة. خبرة عميقة وفهم واضح لاحتياجاتنا."
+                   data-en="Trusted partners in our sustainability journey. Deep expertise and clear understanding of our needs.">
+                    شركاء موثوقون في رحلتنا نحو الاستدامة. خبرة عميقة وفهم واضح لاحتياجاتنا.
+                </p>
+                <div class="testimonial-author" data-ar="خالد المطيري" data-en="Khalid Al-Mutairi">خالد المطيري</div>
+                <div class="testimonial-position" data-ar="الرئيس التنفيذي" data-en="Chief Executive Officer">الرئيس التنفيذي</div>
+            </div>
+
+            <div class="testimonial-slide">
+                <p class="testimonial-text" data-ar="برامج تدريبية مميزة رفعت من وعي فريقنا البيئي وساهمت في تحقيق أهدافنا الاستراتيجية."
+                   data-en="Excellent training programs that raised our team's environmental awareness and contributed to achieving our strategic goals.">
+                    برامج تدريبية مميزة رفعت من وعي فريقنا البيئي وساهمت في تحقيق أهدافنا الاستراتيجية.
+                </p>
+                <div class="testimonial-author" data-ar="سارة الدوسري" data-en="Sarah Al-Dosari">سارة الدوسري</div>
+                <div class="testimonial-position" data-ar="مديرة الموارد البشرية" data-en="Human Resources Manager">مديرة الموارد البشرية</div>
+            </div>
+        </div>
+
+        <div class="testimonial-dots">
+            <span class="testimonial-dot active" onclick="goToTestimonial(0)"></span>
+            <span class="testimonial-dot" onclick="goToTestimonial(1)"></span>
+            <span class="testimonial-dot" onclick="goToTestimonial(2)"></span>
+            <span class="testimonial-dot" onclick="goToTestimonial(3)"></span>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="section vision">
+        <h2 class="section-title" data-ar="رؤيتنا" data-en="Our Vision">رؤيتنا</h2>
+        <div class="vision-content">
+            <p data-ar="الوصول إلى عالم يعيش فيه الجميع بتناغم مع الطبيعة ويحقق فيه الأفراد والمجتمعات نموا مستداما يمكنهم من تحقيق تطلعاتهم بصورة سهلة وسريعة، من خلال برامج تعمل بكفاءة وفاعلية وتتماشى مع أحدث وأشمل مفاهيم الفكر والتطور في دعم وتطوير المبادرات والبرامج والمشاريع البيئية والاجتماعية."
+               data-en="To reach a world where everyone lives in harmony with nature, where individuals and communities achieve sustainable growth that enables them to fulfill their aspirations easily and quickly, through programs that work efficiently and effectively, aligned with the latest and most comprehensive concepts of thought and development in supporting and developing environmental and social initiatives, programs, and projects.">
+                الوصول إلى عالم يعيش فيه الجميع بتناغم مع الطبيعة ويحقق فيه الأفراد والمجتمعات نموا مستداما يمكنهم من تحقيق تطلعاتهم بصورة سهلة وسريعة، من خلال برامج تعمل بكفاءة وفاعلية وتتماشى مع أحدث وأشمل مفاهيم الفكر والتطور في دعم وتطوير المبادرات والبرامج والمشاريع البيئية والاجتماعية.
+            </p>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="section" id="partners">
+        <h2 class="section-title" data-ar="شركاؤنا" data-en="Our Partners">شركاؤنا</h2>
+        <p class="section-subtitle" data-ar="معاً لتعظيم الأثر" data-en="Together to Maximize Impact">معاً لتعظيم الأثر</p>
+        <div class="partners-grid">
+            <div class="partner-card">
+                <h3 data-ar="الجهات الحكومية" data-en="Government Entities">🏛️ الجهات الحكومية</h3>
+                <p data-ar="تعاوننا مع الوزارات والهيئات الحكومية المختصة لتعزيز التشريعات والسياسات البيئية"
+                   data-en="Our collaboration with ministries and relevant government bodies to enhance environmental legislation and policies">
+                    تعاوننا مع الوزارات والهيئات الحكومية المختصة لتعزيز التشريعات والسياسات البيئية
+                </p>
+            </div>
+            <div class="partner-card">
+                <h3 data-ar="الشركات والمؤسسات" data-en="Companies & Institutions">🏢 الشركات والمؤسسات</h3>
+                <p data-ar="شراكات مع الشركات التي تتبنى ممارسات مستدامة وتساهم في دعم مشاريعنا البيئية"
+                   data-en="Partnerships with companies that adopt sustainable practices and contribute to supporting our environmental projects">
+                    شراكات مع الشركات التي تتبنى ممارسات مستدامة وتساهم في دعم مشاريعنا البيئية
+                </p>
+            </div>
+            <div class="partner-card">
+                <h3 data-ar="المنظمات غير الربحية" data-en="Non-Profit Organizations">🌍 المنظمات غير الربحية</h3>
+                <p data-ar="العمل مع المنظمات المحلية والدولية لتحقيق أهداف مشتركة في مجالات الاستدامة"
+                   data-en="Working with local and international organizations to achieve common goals in sustainability areas">
+                    العمل مع المنظمات المحلية والدولية لتحقيق أهداف مشتركة في مجالات الاستدامة
+                </p>
+            </div>
+            <div class="partner-card">
+                <h3 data-ar="المجتمعات المحلية" data-en="Local Communities">👥 المجتمعات المحلية</h3>
+                <p data-ar="إشراك المجتمعات المحلية في مشاريعنا لضمان تحقيق تأثير مستدام ومباشر على الأرض"
+                   data-en="Engaging local communities in our projects to ensure sustainable and direct impact on the ground">
+                    إشراك المجتمعات المحلية في مشاريعنا لضمان تحقيق تأثير مستدام ومباشر على الأرض
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <h2 class="section-title" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</h2>
+        <p class="section-subtitle" data-ar="نسعد بالتواصل معكم" data-en="We're Happy to Hear From You">نسعد بالتواصل معكم</p>
+
+        <div class="contact-intro">
+            <h3 data-ar="هل لديك فكرة أو مشروع يحقق أثراً بيئياً؟" data-en="Do You Have an Idea or Project That Achieves Environmental Impact?">
+                هل لديك فكرة أو مشروع يحقق أثراً بيئياً؟
+            </h3>
+            <p data-ar="تواصل معنا اليوم ودعنا نعمل معاً من أجل بناء مستقبل أكثر استدامة وتحقيق التأثير الإيجابي الذي نطمح إليه جميعاً."
+               data-en="Contact us today and let's work together to build a more sustainable future and achieve the positive impact we all aspire to.">
+                تواصل معنا اليوم ودعنا نعمل معاً من أجل بناء مستقبل أكثر استدامة وتحقيق التأثير الإيجابي الذي نطمح إليه جميعاً.
+            </p>
+        </div>
+
+        <div class="contact-content">
+            <form class="contact-form">
+                <div class="form-group">
+                    <label data-ar="الاسم" data-en="Name">الاسم</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label data-ar="البريد الإلكتروني" data-en="Email">البريد الإلكتروني</label>
+                    <input type="email" required>
+                </div>
+                <div class="form-group">
+                    <label data-ar="الموضوع" data-en="Subject">الموضوع</label>
+                    <input type="text" required>
+                </div>
+                <div class="form-group">
+                    <label data-ar="الرسالة" data-en="Message">الرسالة</label>
+                    <textarea required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; cursor: pointer;" 
+                        data-ar="إرسال" data-en="Send">إرسال</button>
+            </form>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-item-icon">📧</div>
+                    <div class="contact-item-text">
+                        <h4 data-ar="البريد الإلكتروني" data-en="Email">البريد الإلكتروني</h4>
+                        <p>Info@atheralesredama.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">📱</div>
+                    <div class="contact-item-text">
+                        <h4 data-ar="الهاتف" data-en="Phone">الهاتف</h4>
+                        <p dir="ltr">+966 50 160 0062</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">🌐</div>
+                    <div class="contact-item-text">
+                        <h4 data-ar="الموقع الإلكتروني" data-en="Website">الموقع الإلكتروني</h4>
+                        <p>Atheralestedama.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-item-icon">📷</div>
+                    <div class="contact-item-text">
+                        <h4 data-ar="إنستغرام" data-en="Instagram">إنستغرام</h4>
+                        <p>@athrsus2030</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 data-ar="مؤسسة أثر الاستدامة" data-en="ATHR Sustainability">مؤسسة أثر الاستدامة</h3>
+                <p data-ar="نحترف التفكير ونجيد التخطيط ونتميز في التطبيق ونحقق الآمال فيستديم الأثر"
+                   data-en="We Master Thinking, Excel in Planning, Distinguish in Implementation">
+                    نحترف التفكير ونجيد التخطيط ونتميز في التطبيق ونحقق الآمال فيستديم الأثر
+                </p>
+                <div class="social-links">
+                    <a href="https://facebook.com/athrsus" target="_blank" class="social-link" title="Facebook">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                        </svg>
+                    </a>
+                    <a href="https://instagram.com/athrsus" target="_blank" class="social-link" title="Instagram">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        </svg>
+                    </a>
+                    <a href="https://x.com/athrsus" target="_blank" class="social-link" title="X (Twitter)">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="https://youtube.com/@athrsus" target="_blank" class="social-link" title="YouTube">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3 data-ar="روابط سريعة" data-en="Quick Links">روابط سريعة</h3>
+                <a href="#about" data-ar="من نحن" data-en="About Us">من نحن</a>
+                <a href="#services" data-ar="خدماتنا" data-en="Our Services">خدماتنا</a>
+                <a href="#partners" data-ar="شركاؤنا" data-en="Our Partners">شركاؤنا</a>
+                <a href="#contact" data-ar="تواصل معنا" data-en="Contact Us">تواصل معنا</a>
+            </div>
+            <div class="footer-section">
+                <h3 data-ar="خدماتنا" data-en="Our Services">خدماتنا</h3>
+                <a href="#services" data-ar="الاستشارات البيئية" data-en="Environmental Consulting">الاستشارات البيئية</a>
+                <a href="#services" data-ar="البرامج التعليمية" data-en="Educational Programs">البرامج التعليمية</a>
+                <a href="#services" data-ar="المشاريع البيئية" data-en="Environmental Projects">المشاريع البيئية</a>
+                <a href="#services" data-ar="ريادة الأعمال" data-en="Entrepreneurship">ريادة الأعمال</a>
+            </div>
+            <div class="footer-section">
+                <h3 data-ar="معلومات التواصل" data-en="Contact Info">معلومات التواصل</h3>
+                <p>Info@atheralesredama.com</p>
+                <p dir="ltr">+966 50 160 0062</p>
+                <p>Atheralestedama.com</p>
+                <p>@athrsus2030</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p data-ar="© 2026 مؤسسة أثر الاستدامة. جميع الحقوق محفوظة. | معاً لتعظيم الأثر لرؤية مستدامة"
+               data-en="© 2026 ATHR Sustainability. All Rights Reserved. | Together to Maximize Impact for a Sustainable Vision">
+                © 2026 مؤسسة أثر الاستدامة. جميع الحقوق محفوظة. | معاً لتعظيم الأثر لرؤية مستدامة
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        let currentLang = 'ar';
+        let currentSlide = 0;
+        const totalSlides = 5;
+        let sliderInterval;
+        let currentTestimonial = 0;
+        const totalTestimonials = 4;
+        let testimonialInterval;
+
+        function toggleLanguage() {
+            const body = document.body;
+            const langBtn = document.getElementById('langBtn');
+
+            if (currentLang === 'ar') {
+                currentLang = 'en';
+                body.classList.add('en');
+                body.setAttribute('dir', 'ltr');
+                body.setAttribute('lang', 'en');
+                langBtn.textContent = 'العربية';
+            } else {
+                currentLang = 'ar';
+                body.classList.remove('en');
+                body.setAttribute('dir', 'rtl');
+                body.setAttribute('lang', 'ar');
+                langBtn.textContent = 'English';
+            }
+
+            updateContent();
+        }
+
+        function updateContent() {
+            const elements = document.querySelectorAll('[data-ar][data-en]');
+            elements.forEach(element => {
+                if (currentLang === 'ar') {
+                    element.textContent = element.getAttribute('data-ar');
+                } else {
+                    element.textContent = element.getAttribute('data-en');
+                }
+            });
+        }
+
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.hero-slide');
+            const indicators = document.querySelectorAll('.indicator');
+
+            slides.forEach(slide => slide.classList.remove('active'));
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+
+            currentSlide = index;
+            if (currentSlide >= totalSlides) currentSlide = 0;
+            if (currentSlide < 0) currentSlide = totalSlides - 1;
+
+            slides[currentSlide].classList.add('active');
+            indicators[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function goToSlide(index) {
+            clearInterval(sliderInterval);
+            showSlide(index);
+            startSlider();
+        }
+
+        function startSlider() {
+            sliderInterval = setInterval(nextSlide, 5000);
+        }
+
+        function showTestimonial(index) {
+            const slides = document.querySelectorAll('.testimonial-slide');
+            const dots = document.querySelectorAll('.testimonial-dot');
+
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            currentTestimonial = index;
+            if (currentTestimonial >= totalTestimonials) currentTestimonial = 0;
+            if (currentTestimonial < 0) currentTestimonial = totalTestimonials - 1;
+
+            slides[currentTestimonial].classList.add('active');
+            dots[currentTestimonial].classList.add('active');
+        }
+
+        function nextTestimonial() {
+            showTestimonial(currentTestimonial + 1);
+        }
+
+        function goToTestimonial(index) {
+            clearInterval(testimonialInterval);
+            showTestimonial(index);
+            startTestimonialSlider();
+        }
+
+        function startTestimonialSlider() {
+            testimonialInterval = setInterval(nextTestimonial, 6000);
+        }
+
+        function animateCounter(element) {
+            const target = parseInt(element.getAttribute('data-target'));
+            const duration = 2000;
+            const step = target / (duration / 16);
+            let current = 0;
+
+            const updateCounter = () => {
+                current += step;
+                if (current < target) {
+                    element.textContent = Math.floor(current);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target;
+                }
+            };
+
+            updateCounter();
+        }
+
+        startSlider();
+        startTestimonialSlider();
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    document.getElementById('navLinks').classList.remove('active');
+                }
+            });
+        });
+
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert(currentLang === 'ar' ? 'شكراً لتواصلك معنا! سنرد عليك قريباً.' : 'Thank you for contacting us! We will respond soon.');
+            this.reset();
+        });
+
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.boxShadow = '0 5px 30px rgba(0, 0, 0, 0.15)';
+            } else {
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            }
+        });
+
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+
+                    if (entry.target.classList.contains('statistics')) {
+                        const counters = entry.target.querySelectorAll('.stat-number');
+                        counters.forEach(counter => {
+                            if (!counter.classList.contains('animated')) {
+                                animateCounter(counter);
+                                counter.classList.add('animated');
+                            }
+                        });
+                    }
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .partner-card, .statistics, .testimonials, .process-card').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
